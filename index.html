@@ -1,123 +1,116 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hassam AI Studio</title>
-<style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #101827;
-  color: white;
-  text-align: center;
-}
-header {
-  background: #172554;
-  padding: 25px 10px;
-}
-h1 { color: #38bdf8; }
-main {
-  max-width: 650px;
-  margin: 25px auto;
-  padding: 20px;
-}
-select, button {
-  padding: 12px;
-  margin: 8px;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-}
-select { width: 90%; }
-button {
-  background: #0284c7;
-  color: white;
-  cursor: pointer;
-}
-#result {
-  background: #1e293b;
-  padding: 18px;
-  border-radius: 10px;
-  margin-top: 20px;
-  line-height: 1.6;
-}
-footer {
-  padding: 20px;
-  color: #94a3b8;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hassam Web Studio</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #101827;
+            color: white;
+            text-align: center;
+        }
+
+        header {
+            padding: 25px;
+            background: #080d16;
+        }
+
+        h1 {
+            color: #00e5ff;
+        }
+
+        .hero {
+            padding: 70px 20px;
+        }
+
+        .hero h2 {
+            font-size: 35px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #cccccc;
+        }
+
+        .button {
+            display: inline-block;
+            background: #00e5ff;
+            color: #101827;
+            padding: 14px 25px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .services {
+            padding: 30px 15px;
+        }
+
+        .card {
+            background: #1c293d;
+            padding: 25px;
+            margin: 15px auto;
+            border-radius: 12px;
+            max-width: 400px;
+        }
+
+        footer {
+            padding: 20px;
+            background: #080d16;
+        }
+    </style>
 </head>
+
 <body>
-<header>
-  <h1>Hassam AI Studio</h1>
-  <p>Create amazing AI video prompts!</p>
-</header>
 
-<main>
-  <h2>🎬 AI Video Prompt Generator</h2>
-  <p>Choose your video idea:</p>
+    <header>
+        <h1>HASSAM WEB STUDIO</h1>
+        <p>Creative Websites for Your Business</p>
+    </header>
 
-  <select id="idea">
-    <option value="clouds">☁️ Talking Clouds and Village</option>
-    <option value="funny">😂 Funny Friends</option>
-    <option value="village">🌾 Pakistani Village Story</option>
-    <option value="hero">🎥 Cinematic Hero Entry</option>
-  </select>
+    <section class="hero">
+        <h2>Welcome to My Web Studio!</h2>
 
-  <br>
-  <button onclick="generate()">Generate Prompt</button>
+        <p>I create beautiful and modern websites.</p>
 
-  <div id="result">
-    Your video prompt will appear here!
-  </div>
+        <a href="#services" class="button">Explore My Services</a>
+    </section>
 
-  <button onclick="copyPrompt()">📋 Copy Prompt</button>
-</main>
+    <section class="services" id="services">
+        <h2>My Services</h2>
 
-<footer>
-  Made with ❤️ by Hassam Jutt
-</footer>
+        <div class="card">
+            <h3>Business Websites</h3>
+            <p>Modern websites for shops and businesses.</p>
+        </div>
 
-<script>
-function generate() {
-  const idea = document.getElementById("idea").value;
-  const prompts = {
-    clouds: "Create a 10-second animated video of two talking clouds above a beautiful Pakistani village. One cloud asks, 'Yeh konsa pind hai?' The other replies, 'Yeh Hassam Jutt ka pind hai!' Show green fields, village houses and a sign reading Hassam Jutt. Add natural Urdu voices and cinematic visuals.",
+        <div class="card">
+            <h3>Personal Websites</h3>
+            <p>Professional websites for individuals.</p>
+        </div>
 
-    funny: "Create a 10-second funny cartoon video featuring Hassam Jutt and Muzammil Hussain as friends in a Pakistani village. They exchange funny Urdu dialogues, laugh together and surprise each other. Use colorful animation and clear voices.",
+        <div class="card">
+            <h3>Website Design</h3>
+            <p>Simple, attractive and mobile-friendly designs.</p>
+        </div>
+    </section>
+<section class="services">
+    <h2>Contact Me</h2>
+    <p>Need a website for your business?</p>
 
-    village: "Create a cinematic 10-second video of a beautiful Pakistani village at sunset. Show green fields, traditional houses, people walking and a sign reading Hassam Jutt. Add peaceful village sounds and Urdu narration.",
+    <a class="button"
+       href="https://wa.me/923201699184"
+       target="_blank">
+       Contact Me on WhatsApp
+    </a>
+</section>
+    <footer>
+        <p>Made by Hassam Jutt</p>
+    </footer>
 
-    hero: "Create a 10-second cinematic hero entry featuring Hassam Jutt walking confidently through a village street at sunset. Use dramatic camera movement, wind effects, cinematic lighting and a powerful Urdu dialogue."
-  };
-
-  document.getElementById("result").textContent = prompts[idea];
-}
-
-function copyPrompt() {
-  const text = document.getElementById("result").textContent;
-  if (!text || text === "Your video prompt will appear here!") {
-    alert("Pehle Generate Prompt par click karo!");
-    return;
-  }
-
-  const area = document.createElement("textarea");
-  area.value = text;
-  document.body.appendChild(area);
-  area.select();
-
-  try {
-    document.execCommand("copy");
-    alert("Prompt copied!");
-  } catch (e) {
-    alert("Prompt select karke Ctrl+C dabao.");
-  }
-
-  area.remove();
-}
-</script>
 </body>
 </html>
-```
