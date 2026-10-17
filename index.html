@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hassam AI Studio</title>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #101827;
+  color: white;
+  text-align: center;
+}
+header {
+  background: #172554;
+  padding: 25px 10px;
+}
+h1 { color: #38bdf8; }
+main {
+  max-width: 650px;
+  margin: 25px auto;
+  padding: 20px;
+}
+select, button {
+  padding: 12px;
+  margin: 8px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+}
+select { width: 90%; }
+button {
+  background: #0284c7;
+  color: white;
+  cursor: pointer;
+}
+#result {
+  background: #1e293b;
+  padding: 18px;
+  border-radius: 10px;
+  margin-top: 20px;
+  line-height: 1.6;
+}
+footer {
+  padding: 20px;
+  color: #94a3b8;
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>Hassam AI Studio</h1>
+  <p>Create amazing AI video prompts!</p>
+</header>
+
+<main>
+  <h2>🎬 AI Video Prompt Generator</h2>
+  <p>Choose your video idea:</p>
+
+  <select id="idea">
+    <option value="clouds">☁️ Talking Clouds and Village</option>
+    <option value="funny">😂 Funny Friends</option>
+    <option value="village">🌾 Pakistani Village Story</option>
+    <option value="hero">🎥 Cinematic Hero Entry</option>
+  </select>
+
+  <br>
+  <button onclick="generate()">Generate Prompt</button>
+
+  <div id="result">
+    Your video prompt will appear here!
+  </div>
+
+  <button onclick="copyPrompt()">📋 Copy Prompt</button>
+</main>
+
+<footer>
+  Made with ❤️ by Hassam Jutt
+</footer>
+
+<script>
+function generate() {
+  const idea = document.getElementById("idea").value;
+  const prompts = {
+    clouds: "Create a 10-second animated video of two talking clouds above a beautiful Pakistani village. One cloud asks, 'Yeh konsa pind hai?' The other replies, 'Yeh Hassam Jutt ka pind hai!' Show green fields, village houses and a sign reading Hassam Jutt. Add natural Urdu voices and cinematic visuals.",
+
+    funny: "Create a 10-second funny cartoon video featuring Hassam Jutt and Muzammil Hussain as friends in a Pakistani village. They exchange funny Urdu dialogues, laugh together and surprise each other. Use colorful animation and clear voices.",
+
+    village: "Create a cinematic 10-second video of a beautiful Pakistani village at sunset. Show green fields, traditional houses, people walking and a sign reading Hassam Jutt. Add peaceful village sounds and Urdu narration.",
+
+    hero: "Create a 10-second cinematic hero entry featuring Hassam Jutt walking confidently through a village street at sunset. Use dramatic camera movement, wind effects, cinematic lighting and a powerful Urdu dialogue."
+  };
+
+  document.getElementById("result").textContent = prompts[idea];
+}
+
+function copyPrompt() {
+  const text = document.getElementById("result").textContent;
+  if (!text || text === "Your video prompt will appear here!") {
+    alert("Pehle Generate Prompt par click karo!");
+    return;
+  }
+
+  const area = document.createElement("textarea");
+  area.value = text;
+  document.body.appendChild(area);
+  area.select();
+
+  try {
+    document.execCommand("copy");
+    alert("Prompt copied!");
+  } catch (e) {
+    alert("Prompt select karke Ctrl+C dabao.");
+  }
+
+  area.remove();
+}
+</script>
+</body>
+</html>
+```
